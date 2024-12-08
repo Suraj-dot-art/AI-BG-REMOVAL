@@ -14,10 +14,10 @@ const connectDB = async () => {
         mongoose.connection.on('disconnected', () => {
             console.log("Database disconnected");
         });
-
+    
         // Connect to the database
         // console.log(process.env.MONGODB_URI);
-        await mongoose.connect(`${process.env.MONGODB_URI}`);
+        await mongoose.connect(`${process.env.MONGODB_URI}/aiBgRem`);
 
     } catch (err) {
         console.error("Error connecting to the database:", err);
