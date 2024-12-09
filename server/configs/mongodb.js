@@ -1,13 +1,70 @@
-import mongoose from "mongoose";
+require('dotenv').config();
+const mongoose = require('mongoose');
+
+let isConnected = false; // Track connection status
 
 const connectDB = async () => {
+    if (isConnected) {
+        console.log('Using existing MongoDB connection');
+        return;
+    }
+    try {
+        const uri = process.env.MONGODB_URI;
+        if (!uri) {
+            throw new Error('MONGODB_URI is not defined');
+        }
 
-    mongoose.connection.on('connected' , () => {
-        console.log("Database Connected Succesfully");
-    })
+        const connection = await mongoose.connect(uri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
 
-    await mongoose.connect(`${process.env.MONGODB_URI}/ai-bg-removal`)
-}
+        isConnected = connection.connections[0].readyState === 1;
+        console.log('Database Connected Successfully');
+    } catch (err) {
+        console.error('Error connecting to MongoDB:', err.message);
+        throw err;
+    }
+};
+
+module.exports = connectDB;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import mongoose from "mongoose";
+
+// const connectDB = async () => {
+
+//     mongoose.connection.on('connected' , () => {
+//         console.log("Database Connected Succesfully");
+//     })
+
+//     await mongoose.connect(`${process.env.MONGODB_URI}/ai-bg-removal`)
+// }
 
 
 
