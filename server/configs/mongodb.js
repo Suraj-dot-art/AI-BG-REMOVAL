@@ -1,33 +1,21 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 
-let isConnected = false; // Track connection status
+dotenv.config();
 
 const connectDB = async () => {
-    if (isConnected) {
-        console.log('Using existing MongoDB connection');
-        return;
-    }
     try {
-        const uri = process.env.MONGODB_URI;
-        if (!uri) {
-            throw new Error('MONGODB_URI is not defined');
-        }
-
-        const connection = await mongoose.connect(uri, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-
-        isConnected = connection.connections[0].readyState === 1;
-        console.log('Database Connected Successfully');
-    } catch (err) {
-        console.error('Error connecting to MongoDB:', err.message);
-        throw err;
+        const conn = await mongoose.connect(process.env.MONGODB_URI);
+        console.log(`Database Connected Successfully: ${conn.connection.host}`);
+    } catch (error) {
+        console.error(`Database Connection Error: ${error.message}`);
+        process.exit(1); // Exit process with failure
     }
 };
 
-module.exports = connectDB;
+export default connectDB;
+
+
 
 
 
@@ -95,4 +83,4 @@ module.exports = connectDB;
 // };
 
 
- export default connectDB;
+//  export default connectDB;
