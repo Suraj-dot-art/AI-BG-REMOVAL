@@ -12,7 +12,7 @@ const clerkWebHooks = async (req,res) => {
         await whook.verify(JSON.stringify(req.body), {
             "svix-id":req.headers["svix-id"],
             "svix-timestamp":req.headers["svix-timestamp"],
-            "svix-signature":req.headers["svi-signature"],
+            "svix-signature":req.headers["svix-signature"],
         })
 
         const {data,type} = req.body
@@ -26,8 +26,17 @@ const clerkWebHooks = async (req,res) => {
                     lastName: data.last_name,
                     photo:data.image_url
                 }
-                await userModel.create(userData)
-                res.json({})
+                try {
+                    await userModel.create(userData);
+                    console.log("User created successfully:", userData);
+                    res.json({});
+                } catch (err) {
+                    console.error("Error creating user:", err.message);
+                    res.status(500).json({ success: false, message: "Error creating user" });
+                }
+
+                // await userModel.create(userData)
+                // res.json({})
                 break;
             }
             case "user.updated":{
