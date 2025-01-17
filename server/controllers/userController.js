@@ -21,22 +21,22 @@ const clerkWebHooks = async (req,res) => {
             case "user.created":{
                 const userData = {
                     clerkId: data.id,
-                    email: data.email_addresses[0].email.address,
+                    email: data.email_addresses[0].email_address,
                     firstName: data.first_name,
                     lastName: data.last_name,
                     photo:data.image_url
                 }
-                try {
-                    await userModel.create(userData);
-                    console.log("User created successfully:", userData);
-                    res.json({});
-                } catch (err) {
-                    console.error("Error creating user:", err.message);
-                    res.status(500).json({ success: false, message: "Error creating user" });
-                }
+                // try {
+                //     await userModel.create(userData);
+                //     console.log("User created successfully:", userData);
+                //     res.json({});
+                // } catch (err) {
+                //     console.error("Error creating user:", err.message);
+                //     res.status(500).json({ success: false, message: "Error creating user" });
+                // }
 
-                // await userModel.create(userData)
-                // res.json({})
+                await userModel.create(userData)
+                res.json({})
                 break;
             }
             case "user.updated":{
