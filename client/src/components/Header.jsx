@@ -16,8 +16,8 @@ const Header = () => {
                 images for free.
             </h1>
             <p className='my-6 text-[15px] text-gray-500'>
-                Lorem ipsumfkjawofhowuhfrahwerfao;;jawenrjna <br className='max-sm:hidden'/>
-                aoshofuhwaouefhoawdfhjashdfjadfhasdjfkajsdnfjndfkjnadf 
+            Looking for flawless image edits? Our tool removes backgrounds in seconds <br className='max-sm:hidden'/>
+            Simple, fast, and completely free! 
             </p>
             <div>
                 <input onChange={e => removeBg(e.target.files[0])} type="file" accept='image/*' name="" id="upload1" hidden/>

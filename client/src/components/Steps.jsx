@@ -14,7 +14,7 @@ const Steps = () => {
                <img className='max-w-9' src={assets.upload_icon} alt="" />
                <div >
                    <p className='text-xl font-medium'>Upload Image</p>
-                   <p className='text-sm text-neutral-500 mt-1'>this is a demo replace it later <br /> buddy love u</p>
+                   <p className='text-sm text-neutral-500 mt-1'>Choose the image you want to edit  <br /> and upload it effortlessly</p>
                </div>
             </div>
 
@@ -22,7 +22,7 @@ const Steps = () => {
                <img className='max-w-9' src={assets.remove_bg_icon} alt="" />
                <div >
                    <p className='text-xl font-medium'>Remove Background</p>
-                   <p className='text-sm text-neutral-500 mt-1'>this is a demo replace it later <br /> buddy love u</p>
+                   <p className='text-sm text-neutral-500 mt-1'>Let our AI technology work its magic to remove  <br /> the background automatically</p>
                </div>
             </div>
 
@@ -30,7 +30,7 @@ const Steps = () => {
                <img className='max-w-9' src={assets.download_icon} alt="" />
                <div >
                    <p className='text-xl font-medium'>Download Image</p>
-                   <p className='text-sm text-neutral-500 mt-1'>this is a demo replace it later <br /> buddy love u</p>
+                   <p className='text-sm text-neutral-500 mt-1'>Save your perfectly edited image instantly,  <br />ready for any purpose!</p>
                </div>
             </div>
 
